@@ -1,0 +1,13 @@
+services:
+  openlive:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Change this before exposing the server to the internet!
+      - OPENLIVE_ADMIN_TOKEN=${OPENLIVE_ADMIN_TOKEN:-change-me}
+      - OPENLIVE_SEED_CODE=${OPENLIVE_SEED_CODE:-OPENLIVE-DEMO-2026}
+    volumes:
+      - openlive-data:/data
+volumes:
+  openlive-data:

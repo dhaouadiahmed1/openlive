@@ -1,0 +1,11 @@
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+backend/.env
+backend/openlive.db
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+*.iml
+.DS_Store
