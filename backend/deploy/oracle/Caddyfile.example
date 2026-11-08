@@ -1,0 +1,18 @@
+# OpenLive — Caddy reverse proxy template
+# Copy to /etc/caddy/Caddyfile and replace YOUR_DOMAIN with your domain.
+# (setup-oracle.sh writes the real file for you — this is just the template.)
+# With a domain, Caddy fetches a free HTTPS certificate automatically.
+
+YOUR_DOMAIN {
+    reverse_proxy 127.0.0.1:8000
+}
+
+# No domain? Use this instead (plain HTTP on port 80, no HTTPS):
+# :80 {
+#     reverse_proxy 127.0.0.1:8000
+# }
+#
+# The backend itself always listens only on 127.0.0.1:8000 — it is
+# never exposed directly to the internet. If you bypass Caddy entirely,
+# you would use http://<PUBLIC-IP>:8000/ instead, but then you must open
+# port 8000 in the firewall and you have no HTTPS at all.

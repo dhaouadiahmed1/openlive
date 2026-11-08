@@ -57,6 +57,27 @@ cd backend
 docker compose up -d --build
 ```
 
+## Deploy on Oracle Always Free
+
+Free, always-on VPS ($0/month). Full step-by-step guide for beginners:
+**[backend/deploy/oracle/ORACLE_DEPLOY.md](backend/deploy/oracle/ORACLE_DEPLOY.md)**
+
+Short version: create an Oracle account (card needed for verification,
+Always Free only — never pick a paid shape), create a
+`VM.Standard.A1.Flex` instance (2 OCPU / 12 GB RAM, Ubuntu 24.04),
+open ports 22/80/443, SSH in and run:
+
+```bash
+git clone https://github.com/dhaouadiahmed1/openlive.git /opt/openlive
+cd /opt/openlive
+sudo bash backend/deploy/oracle/setup-oracle.sh your-domain.example.com
+# or, with no domain (plain HTTP): sudo bash backend/deploy/oracle/setup-oracle.sh
+```
+
+Then put `https://<your-domain>/` (or `http://<public-IP>/`) in the
+app Settings. ⚠️ Oracle may reclaim an idle Always Free instance
+after 7 days — the guide explains the risk and the keep-alive cron.
+
 ## Point the app at your backend
 
 1. Build the APK (below) and install it.

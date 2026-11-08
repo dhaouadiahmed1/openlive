@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenLive backend (FastAPI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/openlive/backend
+EnvironmentFile=/etc/openlive/openlive.env
+ExecStart=/opt/openlive/backend/.venv/bin/python -m uvicorn app:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
